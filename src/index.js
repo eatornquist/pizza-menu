@@ -72,16 +72,22 @@ function Header() {
 }
 
 function Menu() {
+  const pizzas = pizzaData
+  // const pizzas = []
+  const numPizzas = pizzas.length
+
   return (
     <main className="menu">
       <h2>Our Menu</h2>
 
-      <ul className="pizzas">
-        {/* Another aproach of iterating over the data list. */}
-        {pizzaData.map((pizza) => (
-          <Pizza pizzaObj={pizza} key={pizza.id} />
-        ))}
-      </ul>
+      {numPizzas > 0 && (
+        <ul className="pizzas">
+          {/* Another aproach of iterating over the data list. */}
+          {pizzaData.map((pizza) => (
+            <Pizza pizzaObj={pizza} key={pizza.id} />
+          ))}
+        </ul>
+      )}
 
       {/* <Pizza
       name="Pizza Spinaci"
@@ -138,13 +144,20 @@ function Footer() {
   const openHour = 12
   const closeHour = 22
   const isOpen = hour >= openHour && hour <= closeHour
+  console.log(isOpen)
 
   //   if (hour >= openHour && hour <= closeHour) alert("We're currently open!")
   //   else alert("Sorry we're close")
 
   return (
     <footer className="footer">
-      {new Date().toLocaleTimeString()}. We're currently open
+      {isOpen && (
+        <div className="order">
+          <p>We're open until {closeHour}:00. Come visit us or order online.</p>
+          <button className="btn">Order</button>
+        </div>
+      )}
+      {/* {new Date().toLocaleTimeString()}. We're currently open */}
     </footer>
   )
   //   return React.createElement('footer', null, "We're currently open!")
