@@ -81,12 +81,19 @@ function Menu() {
       <h2>Our Menu</h2>
 
       {numPizzas > 0 ? (
-        <ul className="pizzas">
-          {/* Another aproach of iterating over the data list. */}
-          {pizzaData.map((pizza) => (
-            <Pizza pizzaObj={pizza} key={pizza.id} />
-          ))}
-        </ul>
+        <>
+          <p>
+            Authentic Italian cuisine. 6 creative dishes to choose from. All
+            from our stone oven, all organic, all delicious.
+          </p>
+
+          <ul className="pizzas">
+            {/* Another aproach of iterating over the data list. */}
+            {pizzaData.map((pizza) => (
+              <Pizza pizzaObj={pizza} key={pizza.id} />
+            ))}
+          </ul>
+        </>
       ) : (
         <p>We're still working in our menu. Please come back later</p>
       )}
